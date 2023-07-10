@@ -1,0 +1,22 @@
+include: package:flutter_lints/flutter.yaml
+
+# 기본적으로 필요한 프로젝트 파일 규칙만 설정했습니다.
+
+analyzer:
+  errors:
+    avoid_print: warning # debugPrint나 log를 사용하도록 합니다.
+    avoid_unnecessary_containers: warning # 불필요한 Container 위젯을 사용하지 않도록 합니다.
+    avoid_unused_constructor_parameters: warning # 사용하지 않는 생성자 파라미터를 허용하지 않도록 합니다.
+    curly_braces_in_flow_control_structures: warning # 조건문이나 반복문에서 중괄호를 사용하도록 합니다.
+    always_use_package_imports: error # 패키지 가져오기를 허용하지 않도록 합니다.
+    avoid_relative_lib_imports: error # 상대경로 가져오기를 허용하지 않도록 합니다.
+    
+
+linter:
+  rules:
+    - avoid_print # https://dart-lang.github.io/linter/lints/avoid_print.html
+    - avoid_unnecessary_containers # https://dart-lang.github.io/linter/lints/avoid_unnecessary_containers.html
+    - avoid_unused_constructor_parameters # https://dart-lang.github.io/linter/lints/avoid_unused_constructor_parameters.html
+    - curly_braces_in_flow_control_structures # https://dart-lang.github.io/linter/lints/curly_braces_in_flow_control_structures.html
+    - always_use_package_imports # https://dart-lang.github.io/linter/lints/always_use_package_imports.html
+    - avoid_relative_lib_imports # https://dart-lang.github.io/linter/lints/avoid_relative_lib_imports.html

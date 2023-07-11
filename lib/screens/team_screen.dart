@@ -77,10 +77,12 @@ class _TeamScreenState extends State<TeamScreen> {
         ),
         body: const TabBarView(
           children: <Widget>[
+            //TODO: 이곳에 팀소개 페이지를 연결해주세요.
             TestCard(
               backgroundColor: Color(0xff1A1A1A),
               emptyText: "팀소개 내용이 비어있어요.",
             ),
+            //TODO: 이곳에 팀원소개 페이지를 연결해주세요.
             TestCard(
               backgroundColor: Color(0xff1A1A1A),
               emptyText: "팀원소개 내용이 비어있어요.",
@@ -92,6 +94,7 @@ class _TeamScreenState extends State<TeamScreen> {
   }
 }
 
+/// - 내용이 합쳐지기 전까지 임시로 사용하는 더미 위젯입니다.
 class TestCard extends StatelessWidget {
   const TestCard({
     Key? key,

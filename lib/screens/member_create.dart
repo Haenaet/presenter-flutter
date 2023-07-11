@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MemberCreate extends StatelessWidget {
-  const MemberCreate({super.key});
+import 'package:presenter/widgets/member_create_widget.dart';
+
+class MemberCreatePage extends StatelessWidget {
+  const MemberCreatePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class MemberCreate extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text(
+        title: const Text(
           "멤버 추가하기",
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -17,7 +19,7 @@ class MemberCreate extends StatelessWidget {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.cancel),
+            icon: const Icon(Icons.cancel),
             onPressed: () {
               print("취소 버튼을 클릭했습니다.");
             },
@@ -25,249 +27,85 @@ class MemberCreate extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "GitHub ID",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+              const TitleLabel(
+                titleText: "GitHub ID",
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
-              TextField(
-                maxLength: 34,
-                cursorColor: Colors.black,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintText: '깃허브 아이디를 입력해주세요.',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5.0),
-                    ),
-                    borderSide: BorderSide(width: 1, color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5.0),
-                    ),
-                    borderSide: BorderSide(width: 3, color: Colors.pink),
-                  ),
-                ),
-                keyboardType: TextInputType.emailAddress,
+              const CustomTextField(
+                hintText: "깃허브 아이디를 입력해주세요.",
               ),
-              Text(
-                "이름",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+              const TitleLabel(
+                titleText: "이름",
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
-              TextField(
-                maxLength: 5,
-                cursorColor: Colors.black,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintText: "이름을 입력해주세요.",
-                  hintStyle: TextStyle(color: Colors.grey),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5.0),
-                    ),
-                    borderSide: BorderSide(width: 1, color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5.0),
-                    ),
-                    borderSide: BorderSide(width: 3, color: Colors.pink),
-                  ),
-                ),
-                keyboardType: TextInputType.name,
+              const CustomTextField(
+                hintText: "이름을 입력해주세요.",
               ),
-              Text(
-                "해시태그",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+              const TitleLabel(
+                titleText: "해시 태그",
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    color: Colors.white,
-                    width: MediaQuery.of(context).size.width / 3 - 20,
-                    height: 40,
-                    child: TextField(
-                      cursorColor: Colors.black,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        prefix: Text(
-                          "# ",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        hintText: "MBTI",
-                        hintStyle: TextStyle(color: Colors.grey),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            width: 3,
-                            color: Colors.pink,
-                          ),
-                        ),
-                      ),
-                    ),
+                  HashTagContainer(
+                    hintText: "MBTI",
                   ),
                   SizedBox(
                     width: 10,
                   ),
-                  Container(
-                    color: Colors.white,
-                    width: MediaQuery.of(context).size.width / 3 - 20,
-                    height: 40,
-                    child: TextField(
-                      cursorColor: Colors.black,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        prefix: Text(
-                          "# ",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        hintText: "장점",
-                        hintStyle: TextStyle(color: Colors.grey),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            width: 3,
-                            color: Colors.pink,
-                          ),
-                        ),
-                      ),
-                    ),
+                  HashTagContainer(
+                    hintText: "장점",
                   ),
                   SizedBox(
                     width: 10,
                   ),
-                  Container(
-                    color: Colors.white,
-                    width: MediaQuery.of(context).size.width / 3 - 20,
-                    height: 40,
-                    child: TextField(
-                      cursorColor: Colors.black,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        prefix: Text(
-                          "# ",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        hintText: "음식",
-                        hintStyle: TextStyle(color: Colors.grey),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            width: 3,
-                            color: Colors.pink,
-                          ),
-                        ),
-                      ),
-                    ),
+                  HashTagContainer(
+                    hintText: "음식",
                   ),
                 ],
               ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                "나의 스타일",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              TextField(
-                maxLines: 5,
-                cursorColor: Colors.black,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintText: '나의 협업 스타일을 입력해주세요.',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5.0),
-                    ),
-                    borderSide: BorderSide(width: 1, color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5.0),
-                    ),
-                    borderSide: BorderSide(width: 3, color: Colors.pink),
-                  ),
-                ),
-                keyboardType: TextInputType.text,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                "블로그 주소",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              TextField(
-                cursorColor: Colors.black,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintText: '블로그 주소를 입력해주세요.',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5.0),
-                    ),
-                    borderSide: BorderSide(width: 1, color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5.0),
-                    ),
-                    borderSide: BorderSide(width: 3, color: Colors.pink),
-                  ),
-                ),
-                keyboardType: TextInputType.text,
-              ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
+              ),
+              const TitleLabel(
+                titleText: "나의 스타일",
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              const CustomTextField(
+                hintText: "나의 스타일을 입력해주세요.",
+              ),
+              const TitleLabel(
+                titleText: "좌우명",
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              const CustomTextField(
+                hintText: "좌우명을 입력해주세요.",
+              ),
+              const TitleLabel(
+                titleText: "블로그 주소",
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              const CustomTextField(
+                hintText: "블로그 주소를 입력해주세요.",
               ),
               Center(
                 child: TextButton(
@@ -275,12 +113,12 @@ class MemberCreate extends StatelessWidget {
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
-                        side: BorderSide(color: Colors.white),
+                        side: const BorderSide(color: Colors.white),
                       ),
                     ),
                     backgroundColor: MaterialStateProperty.all(Colors.white),
                   ),
-                  child: Text(
+                  child: const Text(
                     "저장",
                     style: TextStyle(
                       color: Colors.black,

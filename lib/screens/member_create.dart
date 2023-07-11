@@ -25,8 +25,9 @@ class MemberCreate extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+          padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -62,6 +63,7 @@ class MemberCreate extends StatelessWidget {
                     borderSide: BorderSide(width: 3, color: Colors.pink),
                   ),
                 ),
+                keyboardType: TextInputType.emailAddress,
               ),
               Text(
                 "이름",
@@ -95,6 +97,7 @@ class MemberCreate extends StatelessWidget {
                     borderSide: BorderSide(width: 3, color: Colors.pink),
                   ),
                 ),
+                keyboardType: TextInputType.name,
               ),
               Text(
                 "해시태그",
@@ -108,10 +111,11 @@ class MemberCreate extends StatelessWidget {
                 height: 8,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     color: Colors.white,
-                    width: 100,
+                    width: MediaQuery.of(context).size.width / 3 - 20,
                     height: 40,
                     child: TextField(
                       cursorColor: Colors.black,
@@ -134,11 +138,11 @@ class MemberCreate extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 15,
+                    width: 10,
                   ),
                   Container(
                     color: Colors.white,
-                    width: 100,
+                    width: MediaQuery.of(context).size.width / 3 - 20,
                     height: 40,
                     child: TextField(
                       cursorColor: Colors.black,
@@ -161,11 +165,11 @@ class MemberCreate extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 15,
+                    width: 10,
                   ),
                   Container(
                     color: Colors.white,
-                    width: 100,
+                    width: MediaQuery.of(context).size.width / 3 - 20,
                     height: 40,
                     child: TextField(
                       cursorColor: Colors.black,
@@ -224,6 +228,7 @@ class MemberCreate extends StatelessWidget {
                     borderSide: BorderSide(width: 3, color: Colors.pink),
                   ),
                 ),
+                keyboardType: TextInputType.text,
               ),
               SizedBox(
                 height: 15,
@@ -259,6 +264,7 @@ class MemberCreate extends StatelessWidget {
                     borderSide: BorderSide(width: 3, color: Colors.pink),
                   ),
                 ),
+                keyboardType: TextInputType.text,
               ),
               SizedBox(
                 height: 20,

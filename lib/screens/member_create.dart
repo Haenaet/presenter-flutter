@@ -7,18 +7,26 @@ class MemberCreate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text(
           "멤버 추가하기",
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.black,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.cancel),
+            onPressed: () {
+              print("취소 버튼을 클릭했습니다.");
+            },
+          ),
+        ],
       ),
       body: Container(
         color: Colors.black,
         child: Padding(
-          padding: EdgeInsets.all(30.0),
+          padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

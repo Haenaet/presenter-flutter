@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:presenter/widgets/member_create_widget.dart';
 
 class MemberCreatePage extends StatelessWidget {
-  const MemberCreatePage({super.key});
+  MemberCreatePage({super.key});
+
+  TextEditingController contentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -11,53 +13,64 @@ class MemberCreatePage extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text(
-          "멤버 추가하기",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
+        title: Visibility(
+          // 멤버 데이터가 Null 인 경우 true / 멤버 데이터를 받으면 false
+          // member == null
+          visible: false,
+          replacement: Text(
+            "멤버 수정하기",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          child: Text(
+            "멤버 추가하기",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.cancel),
-            onPressed: () {
-              print("취소 버튼을 클릭했습니다.");
-            },
+          Visibility(
+            // 멤버 데이터를 받으면 true / 멤버 데이터 Null 인 경우 false
+            visible: false, // member != null true
+            child: IconButton(
+              icon: const Icon(Icons.cancel),
+              onPressed: () {
+                showDeleteDialog(context);
+              },
+            ),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        physics: const ClampingScrollPhysics(),
+      body: const SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          padding: EdgeInsets.fromLTRB(10, 0, 10, 50),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TitleLabel(
-                titleText: "GitHub ID",
+              DropDownWidget(),
+              SizedBox(
+                height: 20,
               ),
-              const SizedBox(
-                height: 8,
-              ),
-              const CustomTextField(
-                hintText: "깃허브 아이디를 입력해주세요.",
-              ),
-              const TitleLabel(
+              TitleLabel(
                 titleText: "이름",
               ),
-              const SizedBox(
+              SizedBox(
                 height: 8,
               ),
-              const CustomTextField(
+              CustomTextField(
                 hintText: "이름을 입력해주세요.",
+                maxLength: 4,
               ),
-              const TitleLabel(
+              TitleLabel(
                 titleText: "해시 태그",
               ),
-              const SizedBox(
+              SizedBox(
                 height: 8,
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   HashTagContainer(
@@ -77,59 +90,40 @@ class MemberCreatePage extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
+              SizedBox(
                 height: 20,
               ),
-              const TitleLabel(
+              TitleLabel(
                 titleText: "나의 스타일",
               ),
-              const SizedBox(
+              SizedBox(
                 height: 8,
               ),
-              const CustomTextField(
+              CustomTextField(
                 hintText: "나의 스타일을 입력해주세요.",
+                maxLength: 200,
+                maxLines: 4,
               ),
-              const TitleLabel(
+              TitleLabel(
                 titleText: "좌우명",
               ),
-              const SizedBox(
+              SizedBox(
                 height: 8,
               ),
-              const CustomTextField(
+              CustomTextField(
                 hintText: "좌우명을 입력해주세요.",
               ),
-              const TitleLabel(
+              TitleLabel(
                 titleText: "블로그 주소",
               ),
-              const SizedBox(
+              SizedBox(
                 height: 8,
               ),
-              const CustomTextField(
+              CustomTextField(
                 hintText: "블로그 주소를 입력해주세요.",
               ),
               Center(
-                child: TextButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        side: const BorderSide(color: Colors.white),
-                      ),
-                    ),
-                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                  ),
-                  child: const Text(
-                    "저장",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  onPressed: () {
-                    print("저장 버튼을 눌렀습니다!");
-                  },
-                ),
+                child: SaveButton(),
               ),
             ],
           ),

@@ -6,6 +6,7 @@ class MemberCreate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
@@ -23,8 +24,7 @@ class MemberCreate extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        color: Colors.black,
+      body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
           child: Column(

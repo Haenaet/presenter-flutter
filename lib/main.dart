@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:presenter/screens/memberlist.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +10,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text("해냈조"),
-        ),
-      ),
-    );
+    return const MaterialApp(home: MemberList());
   }
 }

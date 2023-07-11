@@ -1,6 +1,7 @@
 import 'dart:convert';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class MemberDetailPage extends StatefulWidget {
   const MemberDetailPage({Key? key});
@@ -86,15 +87,15 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
                   borderRadius: BorderRadius.circular(100),
                   child: Image.network(
                     'https://iglootoy.com/web/product/big/202112/a5627ce1ef1612190c6f7d9b10ffaf1e.jpg',
-                    height: 140,
-                    width: 140,
+                    height: 160,
+                    width: 160,
                   ),
                 ),
               ),
               SizedBox(
                 //??? ... 물어볼 것.
                 width: 240, // ????
-                height: 240, // ?????
+                height: 200, // ?????
                 child: Expanded(
                   child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
@@ -132,31 +133,149 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
                   ),
                 ),
               ),
-              Expanded(
-                child: SizedBox(
-                  child: GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 2,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, childAspectRatio: 1 / 1.3),
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          color: Colors.white,
-                          child: Column(
-                            children: [
-                              Container(
-                                child: Text(
-                                  '각자 하고 싶은말!',
-                                  style: TextStyle(),
+              SizedBox(
+                height: 12,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white),
+                      width: 160,
+                      height: 160,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(12, 8, 0, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '간단한 자기소개',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 4),
+                                  child: Container(
+                                    width: 140,
+                                    height: 120,
+                                    child: Text(
+                                      '안녕하세요 나는 ???입니다. 여름이라 많이 덥네요~.~',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w300),
+                                      overflow: TextOverflow.clip,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white),
+                      width: 160,
+                      height: 160,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(12, 8, 0, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '좌우명',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 4),
+                                  child: Container(
+                                    width: 140,
+                                    height: 120,
+                                    child: Text(
+                                      '안녕하세요 나는 ???입니다 열심히 하겠습니다!',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w300),
+                                      overflow: TextOverflow.clip,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white),
+                  width: MediaQuery.of(context).size.width,
+                  height: 80,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: IconButton(
+                          onPressed: () {
+                            try {
+                              launchUrl(Uri.parse(
+                                  'https://github.com/Haenaet/presenter-flutter'));
+                            } catch (e) {
+                              print('error!');
+                            }
+                          },
+                          icon: Icon(
+                            Icons.web_rounded,
+                            color: Colors.blue,
                           ),
                         ),
-                      );
-                    },
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          try {
+                            launchUrl(Uri.parse(
+                                'https://github.com/Haenaet/presenter-flutter'));
+                          } catch (e) {
+                            print('error!');
+                          }
+                        },
+                        child: Container(
+                          width: 240,
+                          child: Text(
+                            'https://github.com/Haenaet/presenter-flutter',
+                            style: TextStyle(
+                              overflow: TextOverflow.clip,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

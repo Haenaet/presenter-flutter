@@ -86,13 +86,13 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
                   borderRadius: BorderRadius.circular(100),
                   child: Image.network(
                     'https://iglootoy.com/web/product/big/202112/a5627ce1ef1612190c6f7d9b10ffaf1e.jpg',
-                    height: 120,
-                    width: 120,
+                    height: 140,
+                    width: 140,
                   ),
                 ),
               ),
               SizedBox(
-                //???
+                //??? ... 물어볼 것.
                 width: 240, // ????
                 height: 240, // ?????
                 child: Expanded(
@@ -106,7 +106,7 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
                         child: Card(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          elevation: 8,
+                          elevation: 4,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -122,6 +122,34 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
                                     fontSize: 36,
                                   ),
                                   maxLines: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Expanded(
+                child: SizedBox(
+                  child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 2,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, childAspectRatio: 1 / 1.3),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          color: Colors.white,
+                          child: Column(
+                            children: [
+                              Container(
+                                child: Text(
+                                  '각자 하고 싶은말!',
+                                  style: TextStyle(),
                                 ),
                               ),
                             ],

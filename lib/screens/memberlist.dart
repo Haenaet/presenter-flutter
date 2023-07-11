@@ -33,7 +33,7 @@ class _MemberListState extends State<MemberList> {
 
   int getRandomNumber() {
     while (true) {
-      int randomNumber = Random().nextInt(colorCollection.length - 1);
+      int randomNumber = Random().nextInt(colorCollection.length);
       if (usedColorIndex.length == profileList.length) {
         //profileList 길이랑 같으면 break로 빠져나옴 어차피 5개만 만들거니까
         break;

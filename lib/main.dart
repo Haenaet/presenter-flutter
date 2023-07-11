@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:presenter/screens/member_detail_page.dart';
+import 'package:presenter/widgets/member_detail_page.dart';
 
 void main() {
   runApp(const MainApp());

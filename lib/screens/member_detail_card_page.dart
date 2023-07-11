@@ -1,30 +1,19 @@
-import 'dart:convert';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class MemberDetailPage extends StatefulWidget {
-  const MemberDetailPage({Key? key});
+class MemberDetailCardPage extends StatefulWidget {
+  const MemberDetailCardPage({Key? key}) : super(key: key);
 
   @override
-  State<MemberDetailPage> createState() => _MemberDetailPageState();
+  _MemberDetailCardPageState createState() => _MemberDetailCardPageState();
 }
 
-class _MemberDetailPageState extends State<MemberDetailPage> {
-  @override
-  void initState() {
-    super.initState();
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => MemberDetailCardPage(),
-    //   ),
-    // );
-  }
-
+class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
   @override
   Widget build(BuildContext context) {
     List<String> animal = ['# 귀여움', '# 요다', '# 스타워즈'];
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -40,13 +29,17 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
           ),
         ),
         actions: [
-          Icon(
-            Icons.update_rounded,
-            size: 30,
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.update_rounded,
+              size: 28,
+            ),
           ),
         ],
       ),
       body: Stack(
+        // 주의
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -59,8 +52,9 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
                     child: Text(
                       'Yoda',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.blue,
                         fontSize: 60,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -73,16 +67,17 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
                     color: Colors.blue,
                   ),
                   width: MediaQuery.of(context).size.width,
-                  height: 620,
+                  height: 600,
                 ),
               ),
             ],
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(24, 32, 0, 20),
+                padding: const EdgeInsets.fromLTRB(24, 32, 0, 12),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: Image.network(
@@ -92,50 +87,28 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
                   ),
                 ),
               ),
-              SizedBox(
-                //??? ... 물어볼 것.
-                width: 240, // ????
-                height: 200, // ?????
-                child: Expanded(
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      String animals = animal[index];
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 28, top: 10),
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          elevation: 4,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 14,
-                                ),
-                                child: Text(
-                                  animals,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 36,
-                                  ),
-                                  maxLines: 1,
-                                ),
-                              ),
-                            ],
-                          ),
+              ...animal.map((e) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 24, bottom: 8),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 4,
+                    child: Padding(
+                      padding: const EdgeInsets.all(6),
+                      child: Text(
+                        e,
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueAccent,
                         ),
-                      );
-                    },
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 12,
-              ),
+                );
+              }).toList(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -168,9 +141,10 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
                                     width: 140,
                                     height: 120,
                                     child: Text(
-                                      '안녕하세요 나는 ???입니다. 여름이라 많이 덥네요~.~',
+                                      '안녕하세요 나는 ???입니다. ~.~',
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w300),
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 14),
                                       overflow: TextOverflow.clip,
                                     ),
                                   ),
@@ -213,7 +187,9 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
                                     child: Text(
                                       '안녕하세요 나는 ???입니다 열심히 하겠습니다!',
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w300),
+                                        fontWeight: FontWeight.w300,
+                                        fontSize: 14,
+                                      ),
                                       overflow: TextOverflow.clip,
                                     ),
                                   ),

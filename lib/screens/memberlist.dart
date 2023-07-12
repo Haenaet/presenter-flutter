@@ -56,38 +56,45 @@ class _MemberListState extends State<MemberList> {
           color: Color(0xff1A1A1A),
           child: Padding(
             padding: const EdgeInsets.only(top: 30),
-            child: ListView.builder(
-              itemCount: profileList.length,
-              itemBuilder: (context, index) {
-                String profile = profileList[index];
-
-                return Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    height: 80,
-                    width: 90,
-                    decoration: BoxDecoration(
-                      color: colorCollection[getRandomNumber()],
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(35),
-                        bottomLeft: Radius.circular(35),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: Text(
-                        profileList[index],
+            child: profileList.isEmpty
+                ? Center(
+                    child: Text('리스트를 추가하세요.',
                         style: const TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 30,
+                        )))
+                : ListView.builder(
+                    itemCount: profileList.length,
+                    itemBuilder: (context, index) {
+                      String profile = profileList[index];
+
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          height: 80,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            color: colorCollection[getRandomNumber()],
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(35),
+                              bottomLeft: Radius.circular(35),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Text(
+                              profileList[index],
+                              style: const TextStyle(
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
           ),
         ),
         floatingActionButton: FloatingActionButton(

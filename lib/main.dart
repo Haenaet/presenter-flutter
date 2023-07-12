@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'Pretendard'),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: TeamScreen(),
+      home: const TeamScreen(),
     );
   }
 }

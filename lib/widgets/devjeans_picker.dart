@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:presenter/widgets/devjeans_image.dart';
 
 /// -[DevJeansPicker] 클래스는 개발진스 이미지를 선택할 수 있는 위젯입니다.
@@ -31,9 +32,9 @@ class _DevJeansPickerState extends State<DevJeansPicker>
       duration: const Duration(milliseconds: 500),
     );
 
-    /// -[springAnimation]을 초기화합니다.
-    /// -[springAnimation]은 [springController]를 사용하여 애니메이션을 적용합니다.
-    /// -스프링 효과를 위해 곡선을 처음엔 빠르고 끝설정합니다.
+    /// - [springAnimation]을 초기화합니다.
+    /// - [springAnimation]은 [springController]를 사용하여 애니메이션을 적용합니다.
+    /// - 스프링 효과를 위해 곡선을 처음엔 빠르고 끝설정합니다.
     springAnimation = CurvedAnimation(
       parent: springController,
       curve: Curves.easeOutBack,
@@ -117,7 +118,6 @@ class _DevJeansPickerState extends State<DevJeansPicker>
             },
           ),
         ),
-
         const SizedBox(width: 22.0),
       ],
     );

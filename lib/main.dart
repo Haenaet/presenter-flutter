@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:presenter/screens/memberlist.dart';
 import 'package:presenter/widgets/member_detail_page.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MemberDetailPage(),
+      home: MaterialApp(home: MemberList());
     );
   }
 }

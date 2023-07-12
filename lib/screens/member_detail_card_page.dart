@@ -1,12 +1,12 @@
+import 'package:presenter/screens/member_create.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class MemberDetailCardPage extends StatefulWidget {
   const MemberDetailCardPage({Key? key}) : super(key: key);
 
   @override
-  _MemberDetailCardPageState createState() => _MemberDetailCardPageState();
+  State<MemberDetailCardPage> createState() => _MemberDetailCardPageState();
 }
 
 class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
@@ -17,7 +17,7 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('상세 페이지'),
+        title: const Text('상세 페이지'),
         backgroundColor: Colors.black,
         elevation: 0.0,
         leading: IconButton(
@@ -33,7 +33,7 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
             nav.pop();
             nav.pop(); 이전페이지 이동*/
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.navigate_before,
             size: 40,
           ),
@@ -41,10 +41,9 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
         actions: [
           IconButton(
             onPressed: () {
-              //수정페이지 이동.
-              //Navigator.push(context, MaterialPageRoute(builder: (context) => 수정페이지() ));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MemberCreatePage() ));
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.update_rounded,
               size: 28,
             ),
@@ -57,11 +56,11 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 6, right: 16),
+                    padding: EdgeInsets.only(bottom: 6, right: 16),
                     child: Text(
                       'Yoda', //이름
                       style: TextStyle(
@@ -114,7 +113,7 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
                       padding: const EdgeInsets.all(6),
                       child: Text(
                         e,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Colors.blueAccent,
@@ -135,8 +134,8 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
                           color: Colors.white),
                       width: 170,
                       height: 170,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 8, 0, 0),
+                      child: const Padding(
+                        padding: EdgeInsets.fromLTRB(12, 8, 0, 0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -146,8 +145,8 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 4),
-                              child: Container(
+                              padding: EdgeInsets.only(top: 4),
+                              child: SizedBox(
                                 width: 150,
                                 height: 130,
                                 child: Text(
@@ -173,8 +172,8 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
                           color: Colors.white),
                       width: 170,
                       height: 170,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 8, 0, 0),
+                      child: const Padding(
+                        padding: EdgeInsets.fromLTRB(12, 8, 0, 0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -184,8 +183,8 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 4),
-                              child: Container(
+                              padding:  EdgeInsets.only(top: 4),
+                              child:  SizedBox(
                                 width: 150,
                                 height: 130,
                                 child: Text(
@@ -227,7 +226,7 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
                             print('error!');
                           }
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.web_rounded,
                           color: Colors.blue,
                           size: 30,
@@ -243,7 +242,7 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
                             print('error!');
                           }
                         },
-                        child: Container(
+                        child: const SizedBox(
                           width: 230,
                           child: Text(
                             //블로그 주소 데이터 넣는 곳.

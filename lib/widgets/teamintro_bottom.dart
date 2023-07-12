@@ -23,7 +23,7 @@ class TeamIntroWidget extends StatelessWidget {
                     // TODO: Palette 클래스에 있는 onPrimaryColor 사용 예시
                     color: Palette.onPrimaryColor,
                     fontSize: 30.0,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 const SizedBox(height: 10.0),
@@ -42,7 +42,7 @@ class TeamIntroWidget extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16.0,
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -63,7 +63,7 @@ class TeamIntroWidget extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16.0,
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -82,7 +82,7 @@ class TeamIntroWidget extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16.0,
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -93,7 +93,7 @@ class TeamIntroWidget extends StatelessWidget {
             ),
             const SizedBox(height: 30.0),
             const TeamContents(
-              title: "🎉 우리의 약속",
+              title: "🤙 우리의 약속",
               one: "1. 우리 모두 평등한 발언권을 가지도록 노력해요.",
               two: "2. 모든 팀원의 바람을 들어주고 존중하도록 해요.",
               three: "3. 침묵은 금물! 리액션을 잘 해주도록 해요.",
@@ -142,7 +142,7 @@ class TeamContents extends StatelessWidget {
           style: const TextStyle(
             color: Colors.white,
             fontSize: 30,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.w600,
           ),
         ),
         const SizedBox(height: 10.0),

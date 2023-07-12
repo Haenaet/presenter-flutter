@@ -60,7 +60,7 @@ class _MemberListState extends State<MemberList> {
       body: Container(
         color: Palette.primaryColor,
         child: Padding(
-          padding: const EdgeInsets.only(top: 30.0),
+          padding: const EdgeInsets.only(top: 10.0),
           child: ListView.builder(
             itemCount: profileList.length,
             itemBuilder: (context, index) {
@@ -69,7 +69,7 @@ class _MemberListState extends State<MemberList> {
                 padding: const EdgeInsets.only(left: 12.0, bottom: 12.0),
                 child: Container(
                   alignment: Alignment.centerLeft,
-                  height: 80,
+                  height: 85,
                   width: 90,
                   decoration: BoxDecoration(
                     color: colorCollection[getRandomNumber()],
@@ -79,11 +79,12 @@ class _MemberListState extends State<MemberList> {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 15.0),
+                    padding: const EdgeInsets.only(left: 20.0),
                     child: Text(
                       member,
                       style: const TextStyle(
-                        fontSize: 40,
+                        fontSize: 45,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -100,12 +101,12 @@ class _MemberListState extends State<MemberList> {
           //TODO: 팀원 정보 추가 화면으로 이동하도록 구현해야 해요.
           debugPrint("팀원 정보 추가 화면으로 이동");
         },
-        backgroundColor: const Color(0xffFF0058),
+        backgroundColor: Colors.white,
         elevation: 1,
         label: const Text(
           "추가하기",
           style: TextStyle(
-            color: Palette.onPrimaryColor,
+            color: Colors.black,
             fontSize: 16.0,
             fontWeight: FontWeight.bold,
           ),
@@ -113,6 +114,7 @@ class _MemberListState extends State<MemberList> {
         icon: const Icon(
           Icons.add_rounded,
           size: 30.0,
+          color: Colors.black,
         ),
       ),
     );

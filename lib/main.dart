@@ -11,8 +11,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "해냈조",
+      theme: ThemeData(fontFamily: 'Pretendard'),
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       home: TeamScreen(),
     );

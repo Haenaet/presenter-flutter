@@ -16,28 +16,32 @@ class _TeamScreenState extends State<TeamScreen> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           backgroundColor: const Color(0xff1A1A1A),
-          toolbarHeight: 150.0,
+          toolbarHeight: 220.0,
           centerTitle: false,
           title: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              SizedBox(
+                height: 50,
+              ),
               Text(
                 "Welcome to",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 26.0,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               SizedBox(
-                height: 10.0,
+                height: 5.0,
               ),
               Text(
                 "해냈조",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 45.0,
+                  fontSize: 70.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),

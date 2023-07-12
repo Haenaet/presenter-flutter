@@ -1,7 +1,8 @@
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+
+import 'package:presenter/configs/palette.dart';
 
 class MemberList extends StatefulWidget {
   const MemberList({Key? key}) : super(key: key);
@@ -49,55 +50,69 @@ class _MemberListState extends State<MemberList> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          color: Color(0xff1A1A1A),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: ListView.builder(
-              itemCount: profileList.length,
-              itemBuilder: (context, index) {
-                String profile = profileList[index];
+  void initState() {
+    super.initState();
+  }
 
-                return Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    height: 80,
-                    width: 90,
-                    decoration: BoxDecoration(
-                      color: colorCollection[getRandomNumber()],
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(35),
-                        bottomLeft: Radius.circular(35),
-                      ),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: Palette.primaryColor,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30.0),
+          child: ListView.builder(
+            itemCount: profileList.length,
+            itemBuilder: (context, index) {
+              String member = profileList[index];
+              return Padding(
+                padding: const EdgeInsets.only(left: 12.0, bottom: 12.0),
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  height: 80,
+                  width: 90,
+                  decoration: BoxDecoration(
+                    color: colorCollection[getRandomNumber()],
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(35.0),
+                      bottomLeft: Radius.circular(35.0),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: Text(
-                        profileList[index],
-                        style: const TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: Text(
+                      member,
+                      style: const TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.green,
-          elevation: 1,
-          child: const Icon(
-            Icons.add_rounded,
-            size: 40,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          //TODO: 팀원 정보 추가 화면으로 이동하도록 구현해야 해요.
+          debugPrint("팀원 정보 추가 화면으로 이동");
+        },
+        backgroundColor: const Color(0xffFF0058),
+        elevation: 1,
+        label: const Text(
+          "추가하기",
+          style: TextStyle(
+            color: Palette.onPrimaryColor,
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
           ),
+        ),
+        icon: const Icon(
+          Icons.add_rounded,
+          size: 30.0,
         ),
       ),
     );

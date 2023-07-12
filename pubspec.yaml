@@ -17,6 +17,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/나는포기하지않아.png
+    - assets/images/내가만든쿠키.png
+    - assets/images/대표캐릭터.png
+    - assets/images/빵찾아삼만리.png
+    - assets/images/커피는내친구.png
   fonts:
     - family: Pretendard
       fonts:

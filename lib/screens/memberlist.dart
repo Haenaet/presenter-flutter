@@ -1,7 +1,8 @@
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:presenter/models/member.dart';
+import 'package:provider/provider.dart';
 
 class MemberList extends StatefulWidget {
   const MemberList({Key? key}) : super(key: key);
@@ -50,12 +51,16 @@ class _MemberListState extends State<MemberList> {
 
   @override
   Widget build(BuildContext context) {
+      return Consumer<MemberService>(
+      builder: (context, memberService , child ) {
+        List<Map<String, dynamic>> memberList = memberService.memberList;
+        
     return MaterialApp(
       home: Scaffold(
         body: ListView.builder(
           itemCount: profileList.length,
           itemBuilder: (context, index) {
-            String profile = profileList[index];
+            String profile = memberList[index]['name']; //여기
 
             return Padding(
               padding: const EdgeInsets.only(left: 10),
@@ -65,7 +70,7 @@ class _MemberListState extends State<MemberList> {
                 width: 90,
                 decoration: BoxDecoration(
                   color: colorCollection[getRandomNumber()],
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(35),
                     bottomLeft: Radius.circular(35),
                   ),
@@ -73,7 +78,7 @@ class _MemberListState extends State<MemberList> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 15),
                   child: Text(
-                    profileList[index],
+                    profile,
                     style: const TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
@@ -95,5 +100,7 @@ class _MemberListState extends State<MemberList> {
         ),
       ),
     );
-  }
+  },
+  );
+}
 }

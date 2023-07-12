@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:presenter/models/member.dart';
-
 import 'package:presenter/widgets/member_create_widget.dart';
 
 class MemberCreatePage extends StatefulWidget {

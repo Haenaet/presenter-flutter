@@ -1,10 +1,4 @@
-import 'dart:convert';
-import 'dart:math';
-
-import 'package:presenter/models/member.dart';
 import 'package:presenter/screens/member_create.dart';
-import 'package:presenter/screens/memberlist.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +14,6 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
   @override
   Widget build(BuildContext context) {
     List<String> animal = ['# 귀여움', '# 요다', '# 스타워즈']; //dummy 데이터
-    
-    // return Consumer<MemberService>(
-    //   builder: (context, MemberService , child ) {
-    //     List<Map<String, dynamic>> memberList = MemberService.memberList;
         
         return Scaffold(
           backgroundColor: Colors.black,
@@ -274,7 +264,5 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
             ],
           ),
         );
-      //}
-    //);
   }
 }

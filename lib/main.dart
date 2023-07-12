@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-   // MultiProvider(providers: [ChangeNotifierProvider(create: ((context) => MemberService()),),],),
-  MainApp());
+    MultiProvider(providers: [ChangeNotifierProvider(create: ((context) => MemberService()),),],),
+  );
 }
 
 class MainApp extends StatelessWidget {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:presenter/configs/palette.dart';
 
 class TeamIntroWidget extends StatelessWidget {
@@ -7,7 +8,6 @@ class TeamIntroWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO: Palette 클래스에 있는 primaryColor 사용 예시
       backgroundColor: Palette.primaryColor,
       body: Padding(
         padding: const EdgeInsets.all(25.0),
@@ -20,7 +20,6 @@ class TeamIntroWidget extends StatelessWidget {
                 const Text(
                   "👥 팀의 키워드",
                   style: TextStyle(
-                    // TODO: Palette 클래스에 있는 onPrimaryColor 사용 예시
                     color: Palette.onPrimaryColor,
                     fontSize: 30.0,
                     fontWeight: FontWeight.w600,
@@ -33,14 +32,14 @@ class TeamIntroWidget extends StatelessWidget {
                       width: 70,
                       height: 40,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
+                        border: Border.all(color: Palette.onPrimaryColor),
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: const Center(
                         child: Text(
                           "#화목",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Palette.onPrimaryColor,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w600,
                           ),
@@ -54,14 +53,14 @@ class TeamIntroWidget extends StatelessWidget {
                       width: 70.0,
                       height: 40.0,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
+                        border: Border.all(color: Palette.onPrimaryColor),
                         borderRadius: BorderRadius.circular(50.0),
                       ),
                       child: const Center(
                         child: Text(
                           "#열정",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Palette.onPrimaryColor,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w600,
                           ),
@@ -73,14 +72,14 @@ class TeamIntroWidget extends StatelessWidget {
                       width: 70,
                       height: 40,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
+                        border: Border.all(color: Palette.onPrimaryColor),
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: const Center(
                         child: Text(
                           "#도전",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Palette.onPrimaryColor,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w600,
                           ),
@@ -140,7 +139,7 @@ class TeamContents extends StatelessWidget {
         Text(
           "$title",
           style: const TextStyle(
-            color: Colors.white,
+            color: Palette.onPrimaryColor,
             fontSize: 30,
             fontWeight: FontWeight.w600,
           ),
@@ -160,7 +159,7 @@ class TeamContents extends StatelessWidget {
                 Text(
                   "$one",
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Palette.onPrimaryColor,
                     fontSize: 16.0,
                     height: 1.5,
                   ),
@@ -169,7 +168,7 @@ class TeamContents extends StatelessWidget {
                 Text(
                   "$two",
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Palette.onPrimaryColor,
                     fontSize: 16.0,
                     height: 1.5,
                   ),
@@ -179,7 +178,7 @@ class TeamContents extends StatelessWidget {
                     ? Text(
                         "$three",
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: Palette.onPrimaryColor,
                           fontSize: 16.0,
                           height: 1.5,
                         ),
@@ -190,7 +189,7 @@ class TeamContents extends StatelessWidget {
                     ? Text(
                         "$four",
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: Palette.onPrimaryColor,
                           fontSize: 16.0,
                           height: 1.5,
                         ),
@@ -201,7 +200,7 @@ class TeamContents extends StatelessWidget {
                     ? Text(
                         "$five",
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: Palette.onPrimaryColor,
                           fontSize: 16.0,
                           height: 1.5,
                         ),

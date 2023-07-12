@@ -69,8 +69,8 @@ class _MemberListState extends State<MemberList> {
                 padding: const EdgeInsets.only(left: 12.0, bottom: 12.0),
                 child: Container(
                   alignment: Alignment.centerLeft,
-                  height: 85,
-                  width: 90,
+                  height: 80,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                     color: colorCollection[getRandomNumber()],
                     borderRadius: const BorderRadius.only(
@@ -83,8 +83,8 @@ class _MemberListState extends State<MemberList> {
                     child: Text(
                       member,
                       style: const TextStyle(
-                        fontSize: 45,
-                        color: Colors.black,
+                        fontSize: 40,
+                        color: Palette.primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -101,20 +101,20 @@ class _MemberListState extends State<MemberList> {
           //TODO: 팀원 정보 추가 화면으로 이동하도록 구현해야 해요.
           debugPrint("팀원 정보 추가 화면으로 이동");
         },
-        backgroundColor: Colors.white,
+        backgroundColor: Palette.onPrimaryColor,
         elevation: 1,
         label: const Text(
           "추가하기",
           style: TextStyle(
-            color: Colors.black,
+            color: Palette.primaryColor,
             fontSize: 16.0,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
           ),
         ),
         icon: const Icon(
           Icons.add_rounded,
           size: 30.0,
-          color: Colors.black,
+          color: Palette.primaryColor,
         ),
       ),
     );

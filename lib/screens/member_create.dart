@@ -15,7 +15,6 @@ class MemberCreatePage extends StatelessWidget {
         backgroundColor: Colors.black,
         title: Visibility(
           // 멤버 데이터가 Null 인 경우 true / 멤버 데이터를 받으면 false
-          // member == null
           visible: false,
           replacement: Text(
             "멤버 수정하기",

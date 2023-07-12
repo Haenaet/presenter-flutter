@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
+import 'package:provider/provider.dart';
+
 import 'package:presenter/models/member.dart';
 import 'package:presenter/screens/memberlist.dart';
-import 'package:provider/provider.dart';
+import 'package:presenter/screens/team_screen.dart';
 
 void main() {
   runApp(
@@ -16,8 +19,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MemberList(),
+    return MaterialApp(
+      title: "해냈조",
+      theme: ThemeData(fontFamily: 'Pretendard'),
+      themeMode: ThemeMode.system,
+      debugShowCheckedModeBanner: false,
+      home: const TeamScreen(),
     );
   }
 }

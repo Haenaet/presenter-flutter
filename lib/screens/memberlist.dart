@@ -5,6 +5,8 @@ import 'package:presenter/models/member.dart';
 import 'package:presenter/screens/member_detail_card_page.dart';
 import 'package:provider/provider.dart';
 
+import 'package:presenter/configs/palette.dart';
+
 class MemberList extends StatefulWidget {
   const MemberList({Key? key}) : super(key: key);
 
@@ -87,16 +89,16 @@ class _MemberListState extends State<MemberList> {
             String memberName = memberList[index]['name'];
 
             return Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.only(left: 12.0, bottom: 12.0),
               child: Container(
                 alignment: Alignment.centerLeft,
                 height: 80,
-                width: 90,
+                width: double.infinity,
                 decoration: BoxDecoration(
                   color: colorCollection[getRandomNumber()],
                   borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(35),
-                    bottomLeft: Radius.circular(35),
+                    topLeft: Radius.circular(35.0),
+                    bottomLeft: Radius.circular(35.0),
                   ),
                 ),
                 child: Padding(
@@ -114,18 +116,31 @@ class _MemberListState extends State<MemberList> {
                      }
                   ), 
                 ),
-              ),
-            );
-          },
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.green,
-          elevation: 1,
-          child: const Icon(
-            Icons.add_rounded,
-            size: 40,
+              );
+            },
           ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          //TODO: 팀원 정보 추가 화면으로 이동하도록 구현해야 해요.
+          debugPrint("팀원 정보 추가 화면으로 이동");
+        },
+        backgroundColor: Palette.onPrimaryColor,
+        elevation: 1,
+        label: const Text(
+          "추가하기",
+          style: TextStyle(
+            color: Palette.primaryColor,
+            fontSize: 16.0,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        icon: const Icon(
+          Icons.add_rounded,
+          size: 30.0,
+          color: Palette.primaryColor,
         ),
       ),
     );

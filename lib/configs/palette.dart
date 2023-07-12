@@ -19,4 +19,9 @@ class Palette {
   /// - [primaryColor]와 대비를 이루기 위해 사용할 수 있어요.
   /// - [Color], [ColorScheme.surface], [ColorScheme.background]
   static const tertiaryColor = Color(0xff333333);
+
+  /// - [spartaColor]는 앱의 강조 컬러입니다.
+  /// - [onPrimaryColor]와 [Colors.white]의 반대 색상으로 사용할 수 있어요.
+  /// - [Text.style], [ColorScheme.background]
+  static const spartaColor = Color(0xffFF3F70);
 }

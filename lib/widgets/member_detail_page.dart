@@ -21,20 +21,21 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
   }
 
   Route _createRoute() {
+    //네비게이션 이벤트 함수
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
           const MemberDetailCardPage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(-1.0, 1.0);
+        const begin = Offset(0.0, 1.0);
         const end = Offset.zero;
-        const curve = Curves.slowMiddle;
+        const curve = Curves.easeIn;
 
         var tween =
             Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),
-          child: child, //Text('hello')
+          child: child,
         );
       },
     );
@@ -43,7 +44,7 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.black, //배경색
       body: Center(),
     );
   }

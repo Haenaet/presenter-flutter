@@ -227,7 +227,7 @@ class SaveButton extends StatelessWidget {
         child: const Text(
           "저장",
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),

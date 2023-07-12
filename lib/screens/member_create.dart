@@ -122,6 +122,7 @@ class MemberCreatePage extends StatelessWidget {
               CustomTextField(
                 hintText: "블로그 주소를 입력해주세요.",
               ),
+              SizedBox(height: 10),
               Center(
                 child: SaveButton(),
               ),

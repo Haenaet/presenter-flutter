@@ -1,6 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:presenter/models/member.dart';
+import 'package:presenter/screens/member_detail_card_page.dart';
+import 'package:provider/provider.dart';
 
 import 'package:presenter/configs/palette.dart';
 
@@ -49,46 +52,69 @@ class _MemberListState extends State<MemberList> {
     return 0; //이미 모든 색을 호출하고있을땐 그냥 그린 반환. 5개만 만들거라서!!
   }
 
-  @override
-  void initState() {
-    super.initState();
+
+
+   Route _createRoute() {
+    //네비게이션 이벤트 함수
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const MemberDetailCardPage(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset.zero;
+        const curve = Curves.easeIn;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Palette.primaryColor,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: ListView.builder(
-            itemCount: profileList.length,
-            itemBuilder: (context, index) {
-              String member = profileList[index];
-              return Padding(
-                padding: const EdgeInsets.only(left: 12.0, bottom: 12.0),
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  height: 80,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: colorCollection[getRandomNumber()],
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(35.0),
-                      bottomLeft: Radius.circular(35.0),
-                    ),
+      return Consumer<MemberService>(
+      builder: (context, memberService , child ) {
+        List<Map<String, dynamic>> memberList = memberService.memberList;
+        
+    return MaterialApp(
+      home: Scaffold(
+        body: ListView.builder(
+          itemCount: memberList.length,
+          itemBuilder: (context, index) {
+            String memberName = memberList[index]['name'];
+
+            return Padding(
+              padding: const EdgeInsets.only(left: 12.0, bottom: 12.0),
+              child: Container(
+                alignment: Alignment.centerLeft,
+                height: 80,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: colorCollection[getRandomNumber()],
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(35.0),
+                    bottomLeft: Radius.circular(35.0),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: Text(
-                      member,
-                      style: const TextStyle(
-                        fontSize: 40,
-                        color: Palette.primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: ListTile(
+                    title : Text(memberName,
+                    style: const TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ),
+                    ),
+                     onTap:()  async{
+                      // await Navigator.push(context, MaterialPageRoute(builder: (_) => MemberDetailPage(),),);
+                      await Navigator.of(context).push(_createRoute());
+                     }
+                  ), 
                 ),
               );
             },
@@ -118,5 +144,7 @@ class _MemberListState extends State<MemberList> {
         ),
       ),
     );
-  }
+  },
+  );
+}
 }

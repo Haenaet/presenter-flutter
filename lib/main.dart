@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:presenter/models/member.dart';
+import 'package:presenter/screens/memberlist.dart';
 import 'package:presenter/screens/team_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    MultiProvider(providers: [ChangeNotifierProvider(create: (context) => MemberService()),],
+    child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {

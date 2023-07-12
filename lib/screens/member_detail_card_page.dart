@@ -21,9 +21,9 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
   Widget build(BuildContext context) {
     List<String> animal = ['# 귀여움', '# 요다', '# 스타워즈']; //dummy 데이터
     
-    return Consumer<MemberService>(
-      builder: (context, MemberService , child ) {
-        List<Map<String, dynamic>> memberList = MemberService.memberList;
+    // return Consumer<MemberService>(
+    //   builder: (context, MemberService , child ) {
+    //     List<Map<String, dynamic>> memberList = MemberService.memberList;
         
         return Scaffold(
           backgroundColor: Colors.black,
@@ -274,7 +274,7 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
             ],
           ),
         );
-      },
-    );
+      //}
+    //);
   }
 }

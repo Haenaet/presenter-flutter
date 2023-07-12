@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:presenter/models/member.dart';
 
 import 'package:presenter/widgets/member_create_widget.dart';
 
-class MemberCreatePage extends StatelessWidget {
-  MemberCreatePage({super.key});
+class MemberCreatePage extends StatefulWidget {
+  const MemberCreatePage({super.key});
 
+  @override
+  State<MemberCreatePage> createState() => _MemberCreatePageState();
+}
+
+class _MemberCreatePageState extends State<MemberCreatePage> {
   TextEditingController contentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
+      
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Visibility(
+        title: const Visibility(
           // 멤버 데이터가 Null 인 경우 true / 멤버 데이터를 받으면 false
           // member == null
           visible: false,

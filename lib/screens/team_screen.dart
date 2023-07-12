@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:presenter/screens/memberlist.dart';
+import 'package:presenter/widgets/teamintro_bottom.dart';
 
 class TeamScreen extends StatefulWidget {
   const TeamScreen({super.key});
@@ -78,15 +80,19 @@ class _TeamScreenState extends State<TeamScreen> {
         body: const TabBarView(
           children: <Widget>[
             //TODO: 이곳에 팀소개 페이지를 연결해주세요.
-            TestCard(
-              backgroundColor: Color(0xff1A1A1A),
-              emptyText: "팀소개 내용이 비어있어요.",
-            ),
+            TeamIntroWidget(),
+
+            // TestCard(
+            //   backgroundColor: Color(0xff1A1A1A),
+            //   emptyText: "팀소개 내용이 비어있어요.",
+            // ),
             //TODO: 이곳에 팀원소개 페이지를 연결해주세요.
-            TestCard(
-              backgroundColor: Color(0xff1A1A1A),
-              emptyText: "팀원소개 내용이 비어있어요.",
-            ),
+            MemberList(),
+
+            // TestCard(
+            //   backgroundColor: Color(0xff1A1A1A),
+            //   emptyText: "팀원소개 내용이 비어있어요.",
+            // ),
           ],
         ),
       ),

@@ -9,7 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 
 class MemberDetailCardPage extends StatefulWidget {
-  MemberDetailCardPage({Key? key}) : super(key: key);
+  const MemberDetailCardPage({Key? key}) : super(key: key);
 
  
   @override

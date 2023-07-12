@@ -37,7 +37,7 @@ class MemberService extends ChangeNotifier {
       'motto' : '열심히 하겠습니다.' ,
       'blogAddress' : 'https://github.com/Haenaet/presenter-flutter' ,
     },
-    { 'name' : 'Hong jonsik' ,
+    { 'name' : 'Choi hongsik' ,
       'hashTag' : ['# entj','# 요다','#스타워즈'] ,
       'introduce' : '안녕하세요 나는 ???입니다.' ,
       'motto' : '열심히 하겠습니다.' ,

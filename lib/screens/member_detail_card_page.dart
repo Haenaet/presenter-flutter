@@ -3,7 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 
 class MemberDetailCardPage extends StatefulWidget {
-  const MemberDetailCardPage({Key? key}) : super(key: key);
+  const MemberDetailCardPage({Key? key,}) : super(key: key);
 
  
   @override
@@ -24,15 +24,8 @@ class _MemberDetailCardPageState extends State<MemberDetailCardPage> {
             leading: IconButton(
               onPressed: () {
                 print('뒤로 가기');
-                /* 경우 1)
-                int count = 0;
-                 Navigator.of(context).popUntil((_) => count++ >= 2);
-                 이전 페이지는 MemberDetailPage이므로 팀페이지로 돌아갈려면 팝 2번 소요.
-                 */
-                /* 경우 2)
                 NavigatorState nav = Navigator.of(context);
                 nav.pop();
-                nav.pop(); 이전페이지 이동*/
               },
               icon: const Icon(
                 Icons.navigate_before,

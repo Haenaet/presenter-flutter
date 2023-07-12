@@ -16,30 +16,30 @@ class _MemberDetailPageState extends State<MemberDetailPage> {
     // TODO: implement initState
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      Navigator.of(context).push(_createRoute());
+    //  Navigator.of(context).push(_createRoute());
     });
   }
 
-  Route _createRoute() {
-    //네비게이션 이벤트 함수
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          const MemberDetailCardPage(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.easeIn;
+  // Route _createRoute() {
+  //   //네비게이션 이벤트 함수
+  //   return PageRouteBuilder(
+  //     pageBuilder: (context, animation, secondaryAnimation) =>
+  //         const MemberDetailCardPage(),
+  //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+  //       const begin = Offset(0.0, 1.0);
+  //       const end = Offset.zero;
+  //       const curve = Curves.fastEaseInToSlowEaseOut;
 
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+  //       var tween =
+  //           Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
+  //       return SlideTransition(
+  //         position: animation.drive(tween),
+  //         child: child,
+  //       );
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {

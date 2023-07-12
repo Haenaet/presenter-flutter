@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:presenter/models/member.dart';
+import 'package:presenter/screens/member_detail_card_page.dart';
 import 'package:provider/provider.dart';
 
 class MemberList extends StatefulWidget {
@@ -49,6 +50,29 @@ class _MemberListState extends State<MemberList> {
     return 0; //이미 모든 색을 호출하고있을땐 그냥 그린 반환. 5개만 만들거라서!!
   }
 
+
+
+   Route _createRoute() {
+    //네비게이션 이벤트 함수
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const MemberDetailCardPage(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset.zero;
+        const curve = Curves.easeIn;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
       return Consumer<MemberService>(
@@ -58,9 +82,9 @@ class _MemberListState extends State<MemberList> {
     return MaterialApp(
       home: Scaffold(
         body: ListView.builder(
-          itemCount: profileList.length,
+          itemCount: memberList.length,
           itemBuilder: (context, index) {
-            String profile = memberList[index]['name']; //여기
+            String memberName = memberList[index]['name'];
 
             return Padding(
               padding: const EdgeInsets.only(left: 10),
@@ -77,13 +101,18 @@ class _MemberListState extends State<MemberList> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 15),
-                  child: Text(
-                    profile,
+                  child: ListTile(
+                    title : Text(memberName,
                     style: const TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
+                    ),
+                     onTap:()  async{
+                      // await Navigator.push(context, MaterialPageRoute(builder: (_) => MemberDetailPage(),),);
+                      await Navigator.of(context).push(_createRoute());
+                     }
+                  ), 
                 ),
               ),
             );

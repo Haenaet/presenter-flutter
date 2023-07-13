@@ -1,14 +1,19 @@
 ![썸네일](.github/resources/Presenter_Banner.png)
 # presenter
+> 아래 링크를 통해 관련 정보를 바로 확인할 수 있어요.
+
+[팀 이슈 히스토리 바로가기](https://github.com/Haenaet/presenter-flutter/issues?q=is%3Aissue+is%3Aclosed)
+
+[팀 컨벤션 문서 바로가기](./CONVENTION.md)
 
 ## Snapshots
 
 <div markdown="1">
 	<p align="center">
-		<img width="230" alt="1" src=".github/resources/Snapshot_1.png" />
-		<img width="230" alt="2" src=".github/resources/Snapshot_2.png" />
-		<img width="230" alt="3" src=".github/resources/Snapshot_3.png" />
-		<img width=230" alt="4"src=".github/resources/Snapshot_4.png" />
+		<img width="200" alt="1" src=".github/resources/Snapshot_1.png" />
+		<img width="200" alt="2" src=".github/resources/Snapshot_2.png" />
+		<img width="200" alt="3" src=".github/resources/Snapshot_3.png" />
+		<img width=200" alt="4"src=".github/resources/Snapshot_4.png" />
 	</p>
 </div>
 
@@ -64,7 +69,4 @@ lib
 - `url_launcher ^6.1.12`
 - `flutter_lints ^2.0.0`
 
-## Git Convention
-> 아래 링크를 통해 바로 확인할 수 있어요.
-
-[바로가기](./CONVENTION.md)
+---

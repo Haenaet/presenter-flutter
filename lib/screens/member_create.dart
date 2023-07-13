@@ -163,8 +163,7 @@ class _MemberCreatePageState extends State<MemberCreatePage> {
                       introduction: styleController.text,
                       motto: mottoController.text,
                       blogAddress: blogController.text,
-                      characterImagePath:
-                          getImageUrl(defaultDevJeans), // 프로필 이미지 경로 추가 필요
+                      characterImagePath: getImageUrl(defaultDevJeans),
                     );
                     memberProvider.addMember(member);
                     ScaffoldMessenger.of(context).showSnackBar(

@@ -51,6 +51,7 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
     mbtiController.text = widget.hashtags[0];
     strengthController.text = widget.hashtags[1];
     foodController.text = widget.hashtags[2];
+    defaultDevJeans = widget.characterImagePath;
     debugPrint(widget.characterImagePath);
   }
 
@@ -66,10 +67,15 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
     super.dispose();
   }
 
+  void updateCharacterImagePath(String path) {
+    setState(() {
+      defaultDevJeans = path;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final memberProvider = Provider.of<MemberProvider>(context);
-    defaultDevJeans = widget.characterImagePath;
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: AppBar(
@@ -113,12 +119,7 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               DevJeansPicker(
-                onChanged: (value) {
-                  setState(() {
-                    defaultDevJeans = value;
-                  });
-                  debugPrint(defaultDevJeans);
-                },
+                onChanged: updateCharacterImagePath,
               ),
               const SizedBox(height: 20.0),
               const TitleLabel(titleText: "이름"),

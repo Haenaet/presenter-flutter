@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
+import 'package:presenter/configs/palette.dart';
+
 void showDeleteDialog(BuildContext context) {
   showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text("삭제하시겠습니까?"),
+        title: const Text("삭제하시겠습니까?"),
         actions: [
           // 취소 버튼
           TextButton(
             onPressed: () {
               Navigator.pop(context); // 팝업 닫기
             },
-            child: Text(
+            child: const Text(
               "취소",
               style: TextStyle(
                 color: Colors.red,
@@ -24,7 +26,7 @@ void showDeleteDialog(BuildContext context) {
             onPressed: () {
               Navigator.pop(context); // 팝업 닫기
             },
-            child: Text(
+            child: const Text(
               "확인",
             ),
           ),
@@ -34,82 +36,11 @@ void showDeleteDialog(BuildContext context) {
   );
 }
 
-class DropDownWidget extends StatefulWidget {
-  const DropDownWidget({super.key});
-
-  @override
-  State<DropDownWidget> createState() => _DropDownWidgetState();
-}
-
-class _DropDownWidgetState extends State<DropDownWidget> {
-  String _selectedEmoji = '😀';
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButtonFormField<String>(
-      value: _selectedEmoji,
-      decoration: const InputDecoration(
-        labelText: '이모지',
-        labelStyle: TextStyle(
-          color: Colors.white,
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            width: 3, // 테두리 사이즈
-            color: Colors.white, // 테두리 색깔
-          ),
-        ),
-        // 텍스트 필드를 눌렀을 때 아래 테두리 설정
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            width: 3,
-            color: Colors.white,
-          ),
-        ),
-      ),
-      items: const [
-        DropdownMenuItem(
-          value: '😀',
-          child: Text('😄'),
-        ),
-        DropdownMenuItem(
-          value: '😄',
-          child: Text('😄'),
-        ),
-        DropdownMenuItem(
-          value: '😊',
-          child: Text('😊'),
-        ),
-        DropdownMenuItem(
-          value: '😎',
-          child: Text('😎'),
-        ),
-        DropdownMenuItem(
-          value: '🙂',
-          child: Text('🙂'),
-        ),
-      ],
-      onChanged: (value) {
-        setState(() {
-          _selectedEmoji = value!;
-        });
-      },
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return '이모지를 선택해주세요.';
-        }
-        return null;
-      },
-    );
-  }
-}
-
 class TitleLabel extends StatelessWidget {
   const TitleLabel({
-    super.key,
+    Key? key,
     required this.titleText,
-  });
+  }) : super(key: key);
 
   final String titleText;
 
@@ -128,25 +59,39 @@ class TitleLabel extends StatelessWidget {
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
-    super.key,
+    Key? key,
     required this.hintText,
+    required this.controller,
     this.maxLength,
     this.maxLines,
-  });
+    this.enabled,
+  }) : super(key: key);
 
+  final TextEditingController controller;
   final String hintText;
   final int? maxLength;
   final int? maxLines;
+  final bool? enabled;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      enabled: enabled ?? true,
+      controller: controller,
+      style: const TextStyle(
+        fontWeight: FontWeight.w500,
+        color: Palette.onPrimaryColor,
+      ),
       maxLength: maxLength ?? 34, // 텍스트 최대 길이
       maxLines: maxLines ?? 1, // 텍스트 최대 줄
-      cursorColor: Colors.black, // 텍스트 필드 입력 시 커서 색깔
+      cursorColor: Palette.spartaColor, // 텍스트 필드 입력 시 커서 색깔
       decoration: InputDecoration(
         filled: true,
-        fillColor: Colors.white,
+        fillColor: Palette.tertiaryColor,
+        labelStyle: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
         hintText: hintText,
         hintStyle: const TextStyle(color: Colors.grey),
         enabledBorder: const OutlineInputBorder(
@@ -159,7 +104,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(5.0),
           ),
-          borderSide: BorderSide(width: 3, color: Colors.pink),
+          borderSide: BorderSide(width: 3, color: Palette.spartaColor),
         ),
       ),
       keyboardType: TextInputType.text,
@@ -169,29 +114,45 @@ class CustomTextField extends StatelessWidget {
 
 class HashTagContainer extends StatelessWidget {
   const HashTagContainer({
-    super.key,
+    Key? key,
+    required this.controller,
     required this.hintText,
-  });
+  }) : super(key: key);
 
+  final TextEditingController controller;
   final String hintText;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
       width: MediaQuery.of(context).size.width / 3 - 20,
-      height: 40,
+      height: 45.0,
+      decoration: BoxDecoration(
+        color: Palette.onPrimaryColor,
+        border: Border.all(
+          color: Palette.onPrimaryColor,
+        ),
+        borderRadius: BorderRadius.circular(5.0),
+      ),
       child: TextField(
-        cursorColor: Colors.black,
+        style: const TextStyle(
+          fontWeight: FontWeight.w500,
+          color: Palette.onPrimaryColor,
+        ),
+        controller: controller,
+        cursorColor: Palette.spartaColor,
         decoration: InputDecoration(
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Palette.tertiaryColor,
           prefix: const Text(
             "# ",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Palette.onPrimaryColor),
           ),
           hintText: hintText,
-          hintStyle: const TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(
+            color: Colors.grey,
+            fontWeight: FontWeight.w500,
+          ),
           focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
               width: 3,
@@ -204,14 +165,23 @@ class HashTagContainer extends StatelessWidget {
   }
 }
 
-class SaveButton extends StatelessWidget {
-  const SaveButton({
-    super.key,
-  });
+class CustomButton extends StatelessWidget {
+  const CustomButton({
+    Key? key,
+    required this.onPressed,
+    required this.label,
+    required this.color,
+    required this.textColor,
+  }) : super(key: key);
+
+  final VoidCallback onPressed;
+  final String label;
+  final Color color;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width - 20,
       height: 40,
       child: TextButton(
@@ -219,22 +189,20 @@ class SaveButton extends StatelessWidget {
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
-              side: const BorderSide(color: Colors.pink),
+              side: BorderSide(color: color),
             ),
           ),
-          backgroundColor: MaterialStateProperty.all(Colors.pink),
+          backgroundColor: MaterialStateProperty.all(color),
         ),
-        child: const Text(
-          "저장",
+        onPressed: onPressed,
+        child: Text(
+          label,
           style: TextStyle(
-            color: Colors.white,
+            color: textColor,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
-        onPressed: () {
-          print("저장 버튼을 눌렀습니다!");
-        },
       ),
     );
   }

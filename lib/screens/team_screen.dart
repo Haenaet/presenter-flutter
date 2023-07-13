@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
 import 'package:presenter/screens/memberlist.dart';
 import 'package:presenter/widgets/teamintro_bottom.dart';
+import 'package:presenter/providers/member_provider.dart';
 import 'package:presenter/configs/palette.dart';
 
 class TeamScreen extends StatefulWidget {
@@ -12,6 +15,12 @@ class TeamScreen extends StatefulWidget {
 }
 
 class _TeamScreenState extends State<TeamScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<MemberProvider>(context, listen: false).loadMemberList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -81,10 +90,15 @@ class _TeamScreenState extends State<TeamScreen> {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: <Widget>[
-            TeamIntroWidget(),
-            MemberList(),
+            const TeamIntroWidget(),
+
+            /// [ChangeNotifierProvider]를 사용하여 [MemberProvider]를 사용할 수 있도록 했어요.
+            ChangeNotifierProvider(
+              create: (context) => MemberProvider(),
+              child: const MemberList(),
+            ),
           ],
         ),
       ),

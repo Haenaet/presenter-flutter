@@ -5,51 +5,29 @@ import 'package:presenter/widgets/devjeans_image.dart';
 /// -[DevJeansPicker] 클래스는 개발진스 이미지를 선택할 수 있는 위젯입니다.
 /// -캐릭터 이미지는 개발진스 사이트에서 미리 커스터마이징한 이미지입니다.
 class DevJeansPicker extends StatefulWidget {
-  const DevJeansPicker({Key? key}) : super(key: key);
+  const DevJeansPicker({
+    Key? key,
+    required this.onChanged,
+  }) : super(key: key);
+
+  final ValueChanged<String> onChanged;
 
   @override
   State<DevJeansPicker> createState() => _DevJeansPickerState();
 }
 
-class _DevJeansPickerState extends State<DevJeansPicker>
-    with SingleTickerProviderStateMixin {
-  /// -[springController]는 드롭다운 애니메이션을 제어하는 컨트롤러입니다.
-  late AnimationController springController;
-
-  /// -[springAnimation]은 드롭다운 애니메이션을 나타냅니다.
-  late Animation<double> springAnimation;
-
+class _DevJeansPickerState extends State<DevJeansPicker> {
   /// -[defaultDevJeans]는 현재 선택된 캐릭터 이미지를 나타냅니다.
   String defaultDevJeans = "캐릭터선택";
 
   @override
   void initState() {
     super.initState();
-
-    /// -[springController]를 초기화합니다.
-    springController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-
-    /// - [springAnimation]을 초기화합니다.
-    /// - [springAnimation]은 [springController]를 사용하여 애니메이션을 적용합니다.
-    /// - 스프링 효과를 위해 곡선을 처음엔 빠르고 끝설정합니다.
-    springAnimation = CurvedAnimation(
-      parent: springController,
-      curve: Curves.easeOutBack,
-    );
   }
 
   @override
   void dispose() {
-    springController.dispose();
     super.dispose();
-  }
-
-  void spring() {
-    springController.reset();
-    springController.forward();
   }
 
   @override
@@ -75,49 +53,56 @@ class _DevJeansPickerState extends State<DevJeansPicker>
             key: ValueKey(defaultDevJeans),
           ),
         ),
-
-        ScaleTransition(
-          scale: springAnimation,
-          child: DropdownButton<String>(
-            value: defaultDevJeans,
-            borderRadius: BorderRadius.circular(26.0),
-            elevation: 2,
-            dropdownColor: const Color(0xff333333),
-            style: const TextStyle(
-              color: Color(0xffF5F5F5),
-              fontSize: 20.0,
-              fontWeight: FontWeight.normal,
-            ),
-            items: const [
-              DropdownMenuItem(
-                value: "캐릭터선택",
-                child: Text('캐릭터 선택'),
-              ),
-              DropdownMenuItem(
-                value: '나는포기하지않아',
-                child: Text('나는 포기하지 않아'),
-              ),
-              DropdownMenuItem(
-                value: '빵찾아삼만리',
-                child: Text('빵 찾아 삼만리'),
-              ),
-              DropdownMenuItem(
-                value: '커피는내친구',
-                child: Text('커피는 나의 친구'),
-              ),
-              DropdownMenuItem(
-                value: '내가만든쿠키',
-                child: Text('내가 만든 쿠키'),
-              ),
-            ],
-            onChanged: (value) {
-              setState(() {
-                defaultDevJeans = value!;
-                spring();
-              });
-            },
+        DropdownButton<String>(
+          value: defaultDevJeans,
+          borderRadius: BorderRadius.circular(26.0),
+          elevation: 2,
+          dropdownColor: const Color(0xff333333),
+          style: const TextStyle(
+            color: Color(0xffF5F5F5),
+            fontSize: 18.0,
+            fontWeight: FontWeight.normal,
           ),
+          items: const [
+            DropdownMenuItem(
+              value: "캐릭터선택",
+              child: Text('캐릭터 선택'),
+            ),
+            DropdownMenuItem(
+              value: '나는포기하지않아',
+              child: Text('나는 포기하지 않아'),
+            ),
+            DropdownMenuItem(
+              value: '빵찾아삼만리',
+              child: Text('빵 찾아 삼만리'),
+            ),
+            DropdownMenuItem(
+              value: '커피는내친구',
+              child: Text('커피는 나의 친구'),
+            ),
+            DropdownMenuItem(
+              value: '내가만든쿠키',
+              child: Text('내가 만든 쿠키'),
+            ),
+            DropdownMenuItem(
+              value: '콜라는제로레몬이최고야',
+              child: Text('제로레몬이 최고야'),
+            ),
+            DropdownMenuItem(
+              value: '초밥킬러',
+              child: Text('나는야 초밥킬러'),
+            ),
+          ],
+          onChanged: (String? value) {
+            setState(() {
+              defaultDevJeans = value!;
+
+              /// 체인지 콜백 함수는 정의하는 구조가 매우 까다롭네요.
+              widget.onChanged(value);
+            });
+          },
         ),
+
         const SizedBox(width: 22.0),
       ],
     );
@@ -135,6 +120,10 @@ class _DevJeansPickerState extends State<DevJeansPicker>
         return 'assets/images/나는포기하지않아.png';
       case '캐릭터선택':
         return 'assets/images/대표캐릭터.png';
+      case '콜라는제로레몬이최고야':
+        return 'assets/images/콜라는제로레몬이최고야.png';
+      case '초밥킬러':
+        return 'assets/images/초밥킬러.png';
       default:
         return 'assets/images/대표캐릭터.png';
     }

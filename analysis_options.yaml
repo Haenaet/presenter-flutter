@@ -13,7 +13,7 @@ analyzer:
     
 
 linter:
-  rules:
+  rules:        
     - avoid_print # https://dart-lang.github.io/linter/lints/avoid_print.html
     - avoid_unnecessary_containers # https://dart-lang.github.io/linter/lints/avoid_unnecessary_containers.html
     - avoid_unused_constructor_parameters # https://dart-lang.github.io/linter/lints/avoid_unused_constructor_parameters.html

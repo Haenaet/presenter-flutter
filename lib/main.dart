@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:presenter/models/member.dart';
 import 'package:presenter/screens/team_screen.dart';
+import 'package:presenter/providers/member_provider.dart';
 
-void main() {
+late SharedPreferences sharedPrefs;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  sharedPrefs = await SharedPreferences.getInstance();
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => MemberService(),
+          create: (context) => MemberProvider(),
         ),
       ],
       child: const MainApp(),

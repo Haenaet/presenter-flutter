@@ -15,8 +15,9 @@ class DevJeansImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       imagePath,
-      width: 160.0,
-      height: 160.0,
+      width: 170.0,
+      height: 170.0,
+      fit: BoxFit.cover,
     );
   }
 }
